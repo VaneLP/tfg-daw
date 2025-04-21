@@ -40,15 +40,113 @@
                 </ul>
                 <form class="d-flex">
                     <a href="./login.html" class="btn btn-outline-primary me-2">Login</a>
-                    <a href="./registro_global.html" class="btn btn-primary">Registro</a>
+                    <a href="./registro_global.html" class="btn btn-primary"><i class="fa-solid fa-paw"></i>
+                        Registro</a>
                 </form>
             </div>
         </div>
     </nav>
 
     <!-- MAIN -->
-    <main>
-        
+    <main class="flex-grow-1 p-0">
+        <div class="row g-0 h-100" style="min-height: 80vh;">
+
+            <!-- columna de la imagen -->
+            <div class="col-md-6 d-none d-md-block h-200 p-0 overflow-hidden">
+                <img src="../img/registro.jpg " alt="Perro feliz en brazos" class="w-100 h-100"
+                    style="object-fit: cover; object-position: center;">
+            </div>
+
+            <!-- columna del form -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center py-4 px-3 px-sm-4 px-lg-5">
+                <div class="w-100" style="max-width: 500px;">
+
+                    <h2 class="text-center mb-4 primary-color fw-bold h3">Registro de Adoptante</h2>
+
+                    <!-- labels e inputs -->
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <form id="registerUserForm" method="POST">
+                                <div class="row g-3 mb-3">
+                                    <div class="col-sm-6">
+                                        <label for="firstName" class="form-label">Nombre
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="firstName" name="firstName"
+                                            placeholder="Vanessa" required>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label for="lastName" class="form-label">Apellidos
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="lastName" name="lastName" 
+                                        placeholder="López Pastor" required>
+                                    </div>
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="email" class="form-control" id="email" name="email" 
+                                    placeholder="usuario@uruario.com" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="userName" class="form-label">Nombre de usuario
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="tel" class="form-control" id="userName" name="userName"
+                                    placeholder="VaneLoPa96" required>
+                                </div>
+
+                                <div class="row g-3 mb-3">
+                                    <div class="col-sm-6">
+                                        <label for="password" class="form-label">Contraseña
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="***********" required>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label for="passwordConfirm" class="form-label">Confirmar Contraseña
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <input type="password" class="form-control" id="passwordConfirm"
+                                            name="passwordConfirm" placeholder="***********" required>
+                                    </div>
+                                </div>
+
+                                <!-- terminos y condiciones -->
+                                <input type="hidden" name="role" value="Adoptante">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="termsCheck" required>
+                                    <label class="form-check-label small" for="termsCheck">
+                                        Acepto los <a href="#">Términos y Condiciones</a> y la <a href="#">Política
+                                            de Privacidad</a>.
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                </div>
+
+                                <!-- botones -->
+                                <div class="d-grid gap-2 d-sm-flex justify-content-sm-between align-items-center">
+                                    <a href="registro_global.html" class="btn btn-link text-secondary p-0"><small><i
+                                                class="fas fa-arrow-left me-1"></i> Volver</small></a>
+                                    <button type="submit" class="btn btn-primary">Crear Cuenta</button>
+                                </div>
+
+                                <div class="text-center mt-3">
+                                    <a href="login.html" class="text-muted"><small>¿Ya tienes cuenta? Inicia
+                                            Sesión</small></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
 
