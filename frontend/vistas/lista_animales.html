@@ -40,14 +40,137 @@
                 </ul>
                 <form class="d-flex">
                     <a href="./login.html" class="btn btn-outline-primary me-2">Login</a>
-                    <a href="./registro_global.html" class="btn btn-primary"><i class="fa-solid fa-paw"></i> Registro</a>
+                    <a href="./registro_global.html" class="btn btn-primary"><i class="fa-solid fa-paw"></i>
+                        Registro</a>
                 </form>
             </div>
         </div>
     </nav>
 
     <!-- MAIN -->
-    <main>
+    <main class="container" style="padding-top: 20px;">
+        <!-- FILTROS -->
+        <div class="row">
+            <div class="col-lg-3 mb-4">
+                <div class="card">
+                    <div class="card-header fw-bold">
+                        Filtrar Búsqueda
+                    </div>
+
+                    <div class="card-body">
+                        <form id="filterForm">
+                            <div class="mb-3">
+                                <!-- tipo de mascota-->
+                                <label for="petType" class="form-label">Tipo de Mascota</label>
+                                <select class="form-select form-select-sm" id="petType">
+                                    <option selected value="">Cualquiera</option>
+                                    <option value="Dog">Perro</option>
+                                    <option value="Cat">Gato</option>
+                                    <option value="Rabbit">Conejo</option>
+                                    <option value="Bird">Pájaro</option>
+                                    <option value="Other">Otro</option>
+                                </select>
+                            </div>
+
+                            <!-- tamaño -->
+                            <div class="mb-3">
+                                <label for="size" class="form-label">Tamaño</label>
+                                <select class="form-select form-select-sm" id="size">
+                                    <option selected value="">Cualquiera</option>
+                                    <option value="Small">Pequeño</option>
+                                    <option value="Medium">Mediano</option>
+                                    <option value="Large">Grande</option>
+                                </select>
+                            </div>
+
+                            <!-- edad -->
+                            <div class="mb-3">
+                                <label for="age" class="form-label">Edad</label>
+                                <select class="form-select form-select-sm" id="age">
+                                    <option selected value="">Cualquiera</option>
+                                    <option value="Puppy">Cachorro</option>
+                                    <option value="Young">Joven</option>
+                                    <option value="Adult">Adulto</option>
+                                    <option value="Senior">Senior</option>
+                                </select>
+                            </div>
+
+                            <!-- genero -->
+                            <div class="mb-3">
+                                <label class="form-label">Género</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" value="" id="genderAny"
+                                        checked>
+                                    <label class="form-check-label" for="genderAny">Cualquiera</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" value="Female"
+                                        id="genderFemale">
+                                    <label class="form-check-label" for="genderFemale">Hembra</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" value="Male"
+                                        id="genderMale">
+                                    <label class="form-check-label" for="genderMale">Macho</label>
+                                </div>
+                            </div>
+
+                            <!-- ubicacion -->
+                            <div class="mb-3">
+                                <label for="location" class="form-label">Ubicación (Provincia)</label>
+                                <input type="text" class="form-control form-control-sm" id="location"
+                                    placeholder="Ej: Alicante">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Aplicar Filtros</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETAS ANIMALES -->
+            <div class="col-lg-9">
+                <h2 class="mb-4">Mascotas en Adopción</h2>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="animalResultsGrid">
+
+                    <!-- ejempl -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="../img/registro.jpg" class="card-img-top pet-card-img" alt="Perro 1">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Max</h5>
+                                <p class="card-text text-muted small mb-2">Perro, Macho, Cachorro</p>
+                                <p class="card-text flex-grow-1">Un perro leal y juguetón.</p>
+                                <a href="./animal_detalle.html"
+                                    class="btn btn-outline-primary mt-auto align-self-start btn-sm">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGINADO -->
+                <nav aria-label="..." class="mt-5 d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link">Anterior</a>
+                        </li>
+
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+
+                        <li class="page-item" aria-current="page">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link" href="#">Siguiente</a>
+                        </li>
+                    </ul>
+                </nav>
 
     </main>
 
@@ -100,7 +223,8 @@
 
             <div class="row align-items-center">
                 <div class="col-12 text-center">
-                    <p class="mb-0"> © 2025 Copyright: <a href="./index.html"><strong class="text-white">PawFinder</strong></a>
+                    <p class="mb-0"> © 2025 Copyright: <a href="./index.html"><strong
+                                class="text-white">PawFinder</strong></a>
                     </p>
                 </div>
             </div>
