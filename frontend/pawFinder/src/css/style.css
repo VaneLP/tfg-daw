@@ -1,0 +1,5 @@
+/* Ejemplo si el contenido está en un div con id="postContent" o una clase específica */
+#postContent, .blog-article-body {
+    white-space: pre-wrap; /* Conserva espacios y saltos de línea, y ajusta línea */
+    word-wrap: break-word; /* Asegura que palabras largas no rompan el layout */
+}
