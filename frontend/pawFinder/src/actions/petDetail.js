@@ -630,19 +630,13 @@ async function populatePetDetails(petInstance) {
 
             // si el contenedor del mapa existe pero no se cumplen las condiciones para mostrarlo
         } else if (mapContainerEl) {
-            let reason = "Ubicación del refugio no disponible en el mapa.";
+                // Ocultar el contenedor del mapa
+                mapContainerEl.style.display = 'none';
 
-            if (!(refugioData instanceof User)) {
-                reason = "Datos del refugio no disponibles para el mapa.";
-            } else if (!refugioData.coordenadas) {
-                reason = "El refugio no tiene coordenadas registradas para el mapa.";
-            }
-
-            const pError = document.createElement('p');
-            pError.className = 'text-muted text-center p-3';
-            pError.textContent = reason;
-
-            mapContainerEl.replaceChildren(pError);
+                // Limpiar cualquier contenido
+                while (mapContainerEl.firstChild) {
+                    mapContainerEl.removeChild(mapContainerEl.firstChild);
+                }
         }
 
     } catch (error) {
@@ -929,7 +923,7 @@ function addAdoptButtonListener(mascotaId) {
         }
 
         const messageText = adoptMessageTextarea?.value.trim() || "";
-        const forbiddenCharsRegex = /[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+        const forbiddenCharsRegex = /[0-9!@#$%^&*()_+\-=\[\]{};':"\\|<>\/?]+/;
 
         setButtonLoading(currentAdoptButton, true, []); 
         clearAdoptMessage();

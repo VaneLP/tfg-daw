@@ -61,11 +61,11 @@ function isValidPassword(password) {
     (?=.*[a-z]) -> al menos una minuscula
     (?=.*[A-Z]) -> al menos una mayuscula
     (?=.*\d) -> al menos un digito
-    (?=.*[@$!%*?&._-]) -> al menos un caracter especial de la lista
-    [A-Za-z\d@$!%*?&._-]{8,} -> longitud minima de 8, conteniendo solo los caracteres permitidos
+    (?=.*[@$!%+*?&._-]) -> al menos un caracter especial de la lista
+    [A-Za-z\d@$+!%*?&._-]{8,} -> longitud minima de 8, conteniendo solo los caracteres permitidos
     */
 
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&._-])[A-Za-z\d@$!%*?&._-]{8,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%+*?&._-])[A-Za-z\d@$+!%*?&._-]{8,}$/;
     return passwordRegex.test(password);
     //return password && password.length >= 1;
 }

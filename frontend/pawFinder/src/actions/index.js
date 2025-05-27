@@ -96,15 +96,32 @@ function createPetCardElement(petInstance) {
     cardBody.append(title, d1, d2, description, link);
     card.append(img, cardBody);
 
+    //crear footer
+    const f = document.createElement('div');
+
     // si la mascota tiene un nombre de refugio valido
     if (petInstance.refugioName && petInstance.refugioName !== 'Refugio Desconocido') {
         // crear pie de tarjeta 
-        const f = document.createElement('div'); 
         f.className = 'card-footer text-muted small';
         f.textContent = `Por: ${petInstance.refugioName}`; 
 
         card.appendChild(f);
     }
+
+    //si hay email de la protectora
+    if (petInstance.refugioId.email) { 
+            f.appendChild(document.createElement('br'));
+
+            //crear a para el correo
+            const emailLink = document.createElement('a');
+            emailLink.href = `mailto:${petInstance.refugioId.email}`;
+            emailLink.textContent = petInstance.refugioId.email;
+            emailLink.classList.add('text-decoration-none');
+            
+            const emailIcon = createIcon(['fas', 'fa-envelope', 'me-1']);
+            
+            f.append(emailIcon, emailLink);
+        }
 
     col.appendChild(card); return col;
 }
