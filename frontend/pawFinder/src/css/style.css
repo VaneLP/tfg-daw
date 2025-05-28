@@ -12015,3 +12015,7 @@ textarea.form-control-lg {
     position: relative; 
     z-index: 2; 
 }
+
+.profile-avatar {
+  width: 100px;
+}
