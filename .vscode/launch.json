@@ -1,0 +1,31 @@
+// .vscode/launch.json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Mocha Tests (via npm test)",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "test"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "sourceMaps": true,
+            "skipFiles": [
+                "<node_internals>/**",
+                "**/node_modules/**"
+            ],
+            "env": {
+                // Combine the existing NODE_OPTIONS with --inspect-brk
+                // The exact value of process.env.NODE_OPTIONS from the script might not be directly accessible here,
+                // so we explicitly add what's in the script plus --inspect-brk.
+                // Note: Order might matter for some Node versions.
+                // --inspect-brk usually comes first or early.
+                "NODE_OPTIONS": "--inspect-brk --experimental-vm-modules"
+            },
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

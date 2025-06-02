@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "API para la aplicación PawFinder",
   "main": "index.js",
-  "type": "module", 
+  "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js" 
+    "dev": "nodemon index.js",
+    "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules mocha --timeout 10000 src/test/**/*.test.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -17,6 +18,11 @@
     "mongoose": "^8.4.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "chai": "^5.2.0",
+    "cross-env": "^7.0.3",
+    "mocha": "^11.5.0",
+    "mongodb-memory-server": "^10.1.4",
+    "nodemon": "^3.1.0",
+    "supertest": "^7.1.1"
   }
 }

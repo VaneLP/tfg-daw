@@ -1,10 +1,16 @@
 import jwt from "jsonwebtoken";
 import User from "../models/user.js";
-import { } from 'dotenv/config';
+
+const JWT_SECRET = process.env.SECRET_KEY || "pawfinder_super_secret_default_key";
 
 export async function authenticate(req, res, next) {
   try {
-    const token = req.headers.authorization?.split(" ")[1];
+    const authHeader = req.headers.authorization;
+    let token;
+
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      token = authHeader.split(" ")[1];
+    }
 
     if (!token) {
       return res
@@ -14,17 +20,18 @@ export async function authenticate(req, res, next) {
         });
     }
 
-    const decoded = jwt.verify(token, process.env.SECRET_KEY || "tu_super_secreto_por_defecto");
+    const decoded = jwt.verify(token, JWT_SECRET);
 
-    if (!decoded || !decoded.userId) {
-      throw new Error("Token inválido");
+    if (!decoded.userId) {
+      console.log("AUTHENTICATE: Token payload malformed (no userId), sending 401.");
+      return res.status(401).json({ message: "Token inválido: payload incorrecto." });
     }
 
     const user = await User.findById(decoded.userId).select('-password');
 
     if (!user) {
       return res
-        .status(404)
+        .status(401)
         .json({
           message: 'Usuario asociado al token no encontrado.'
         });
@@ -34,22 +41,31 @@ export async function authenticate(req, res, next) {
     next();
 
   } catch (error) {
+    if (error instanceof jwt.TokenExpiredError) {
+      return res.status(401).json({ message: 'Token inválido o expirado.' });
+    }
+    if (error instanceof jwt.JsonWebTokenError) {
+      return res.status(401).json({ message: 'Token inválido.' });
+    }
+    return res.status(500).json({ message: 'Error de autenticación interno.' });
   }
 }
 
 export function authorize(roles = []) {
-  if (typeof roles === 'string') roles = [roles];
-  return (req, res, next) => {
+  if (typeof roles === 'string') {
+    roles = [roles];
+  }
 
+  return (req, res, next) => {
     if (!req.user) {
       return res
         .status(401)
         .json({
-          message: 'Usuario no autenticado.'
+          message: 'Usuario no autenticado para la autorización.'
         });
     }
 
-    if (roles.length && !roles.includes(req.user.role)) {
+    if (roles.length > 0 && !roles.includes(req.user.role)) {
       return res
         .status(403)
         .json({

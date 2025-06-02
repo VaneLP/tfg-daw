@@ -26,7 +26,7 @@ export async function postOneApplication(req, res) {
         // si no se encuentra la mascota
         if (!pet) {
             return res.status(404).json({
-                message: `Mascota ${mascotaId} no encontrada.`
+                message: `Mascota no encontrada.`
             });
         }
 
